@@ -69,8 +69,6 @@ class ReservaUpdateView(generic.UpdateView):
   success_url = reverse_lazy("reservas-list")
   template_name = "reserva/form.html"
 
-  
-
 
 #---------------------------------------------------------#
 
@@ -149,10 +147,12 @@ class StandDeleteView(generic.DeleteView):
 
 #---------------------------------------------------------#
 
-#def detalhar_stand(request):
-#    stands = Stand.objects.all()
-#    context ={
-#        'stands':stands
-#    }
-#    return render(request, "stand/detalhe.html",context)
+class StandDetailView(generic.DetailView):
+    model = Stand
+    template_name = 'stand/detalhe.html'
+    context_object_name = 'stand'
+
+    def get_object(self, queryset=None):
+        item_id = self.kwargs.get('pk')  
+        return get_object_or_404(Stand, pk=item_id)
 

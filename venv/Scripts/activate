@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\20201094010008\Downloads\PPI 06_10_23\venv"
+VIRTUAL_ENV="C:\Users\20201094010008\Downloads\FINECAP\FINECAP\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
