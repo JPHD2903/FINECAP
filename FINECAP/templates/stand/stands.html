@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block center %}
+
+<script>
+  $(document).ready(function () {
+    $('#confirmCadastroModal').modal('show');
+  });
+</script>
+
+<h2> STANDS </h2>
+
+<div>
+  <div class="mensagem_card">
+    {% if messages %}
+    {% for message in messages%}
+      <div class="alert alert-{{message.tags}}" role="alert">
+        {{ message }}
+      </div>
+    {% endfor %}
+    {% endif %}
+  </div>
+</div>
+
+<a href="{% url 'criar_stand' %}" class="btn btn-success mb-3">Novo Cadastro</a>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Localização do Stand</th>
+      <th>Valor</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for stand in stands %}
+    <tr>
+      <td>{{ stand.localizacao }}</td>
+      <td>{{ stand.valor }}</td>
+      <td>
+
+        <a href="{% url 'stands-update' pk=stand.pk %}" class="btn btn-primary btn-sm">Editar</a>
+        <a href="{% url 'stands-delete' pk=stand.pk %}" class="btn btn-danger btn-sm">Remover</a>
+      </td>
+    </tr>
+    {% endfor %}
+
+
+
+  </tbody>
+</table>
+
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item">
+      {% if stands.has_previous %}
+        <a class="page-link" href="?page={{ stands.previous_page_number }}">Anterior</a>
+      {% endif %}
+    </li>
+
+    <li class="page-item">
+      {% if stands.has_next %}
+        <a class="page-link" href="?page={{ stands.next_page_number }}">Próximo</a>
+      {% endif %}
+    </li>
+  </ul>
+</nav>
+{% endblock %}

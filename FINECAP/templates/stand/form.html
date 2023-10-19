@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block center %}
+<h2> Formulário de Matricula.</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="nome" class="form-label">Localização</label>
+        {{ form.localizacao }}
+    </div>
+
+    <div class="mb-3">
+        <label for="nome" class="form-label">Valor</label>
+        {{ form.valor }}
+    </div>
+
+    <button type="submit" class="btn btn-primary">Enviar</button>
+
+    
+    
+</form>
+
+
+{% endblock %}

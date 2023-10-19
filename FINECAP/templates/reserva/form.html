@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+
+{% block center %}
+    <h2> Formulário de Matricula.</h2>
+       
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="cnpj" class="form-label">CNPJ</label>
+            <input type="text" class="form-control mask-cnpj" id="id_cnpj" name="{{ form.cnpj.name }}">
+        </div>
+
+        <div class="mb-3">
+            <label for="nome" class="form-label">Nome da Empresa</label>
+            {{ form.nome_empresa }}
+        </div>
+
+        <div class="mb-3">
+            <label for="nome" class="form-label">Categoria da Empresa</label>
+            {{ form.categoria_empresa }}
+        </div>
+        
+
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="CheckBox form-check-input" id="id_quitado" 
+            name="{{ form.quitado.name }}" {% if form.quitado.value %}checked{% endif %}>
+            <label for="id_quitado" class="form-check-label">Quitado</label>
+        </div>
+        
+
+        <button type="submit" class="btn btn-primary">Enviar</button>
+
+        
+    </form>  
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script> 
+    <script>
+        $(document).ready(function () {
+            $('#id_cnpj').mask('00.000.000/0000-00'); // Substitua 'id_cnpj' pelo ID do seu campo CNPJ
+        });
+    </script>
+    
+    
+    
+    
+
+
+{% endblock %}
+   

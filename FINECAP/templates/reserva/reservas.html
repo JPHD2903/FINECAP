@@ -1,0 +1,60 @@
+{% extends 'base.html' %} 
+
+{% block center %} 
+  <h2> RESERVAS </h2>
+  <div>
+    <div class="mensagem_card">
+      {% if messages %}
+      {% for message in messages%}
+        <div class="alert alert-{{message.tags}}" role="alert">
+          {{ message }}
+        </div>
+      {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+
+  <a href="{% url 'criar_reserva' %}" class="btn btn-success mb-3">Novo Cadastro</a>
+
+  <table class="table table-bordered"> 
+    <thead>
+      <tr>
+        <th>Nome da Empresa</th>
+        <th>Categoria da Empresa</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for reserva in reservas %}  
+      <tr>
+        <td>{{ reserva.nome_empresa }}</td>
+        <td>{{ reserva.categoria_empresa }}</td>
+        <td>
+          <a href="{% url 'reservas-detail' pk=reserva.pk %}" class="btn btn-primary btn-sm">Detalhar</a>
+          <a href="{% url 'reservas-update' pk=reserva.pk %}" class="btn btn-primary btn-sm">Editar</a>
+          <a href="{% url 'reservas-delete' pk=reserva.pk %}" class="btn btn-danger btn-sm">Remover</a> 
+        </td>
+      </tr>
+      {% endfor %}
+
+      
+    
+    </tbody>
+  </table>
+
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item">
+        {% if reservas.has_previous %}
+          <a class="page-link" href="?page={{ reservas.previous_page_number }}">Anterior</a>
+        {% endif %}
+      </li>
+
+      <li class="page-item">
+        {% if reservas.has_next %}
+          <a class="page-link" href="?page={{ reservas.next_page_number }}">Próximo</a>
+        {% endif %}
+      </li>
+    </ul>
+  </nav>
+{% endblock %}

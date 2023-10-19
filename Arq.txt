@@ -1,0 +1,16 @@
+1. Crud funcional de todos os modelos (reservas e stands) - base template e estilo do projeto;
+2. Inclusão dos modelos para gerenciamento no admin do django;
+3. Utilização de class based view;
+4. Mensagens de sucesso; => Diego
+5. Utilização de máscaras em campos de formulários; 
+6. Cadastro e autenticação de usuário com django allauth;
+7. Rotas com autenticação necessária.
+
+Ajeitar checkbox de quitado => Concluído
+Adicionar páginas de detalhe => Concluído
+Paginação => Concluído
+Pop-ups de confirmação de detalhe, exclusão e edição
+
+Bootstrap
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

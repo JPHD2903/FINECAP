@@ -1,0 +1,22 @@
+
+{% extends 'base.html' %}
+
+{% block center %}
+
+  <h2>Confirmar alteração de dados</h2>
+
+  <p>Tem certeza de que deseja atualizar os dados ?</p>
+
+  <form method="post">
+
+    {% csrf_token %}
+
+    <button type="submit" class="btn btn-danger">ATUALIZAR</button>
+
+  </form>
+
+  <p><a href="{% url 'reservas-list' %}">Cancelar</a></p>
+       
+{% endblock %}
+   
+

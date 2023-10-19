@@ -1,0 +1,32 @@
+{% extends 'base.html' %} 
+
+{% block center %} 
+  <h2> DETALHE RESERVA </h2>
+
+  <a href="{% url 'reservas-list' %}" class="btn btn-success mb-3">Voltar</a>
+
+  <table class="table table-bordered"> 
+    <thead>
+      <tr>
+        <th>CNPJ</th>
+        <th>Nome da Empresa</th>
+        <th>Categoria da Empresa</th>
+        <th>Quitado</th>
+      </tr>
+    </thead>
+    <tbody>
+        <td>{{ reserva.cnpj }}</td>
+        <td>{{ reserva.nome_empresa }}</td>
+        <td>{{ reserva.categoria_empresa }}</td>
+        <td>
+          {% if reserva.quitado %}
+            Quitado
+          {% else %}
+            Pendente
+          {% endif %}
+        </td>
+      </tr>
+    
+    </tbody>
+  </table>
+{% endblock %}
