@@ -1,5 +1,6 @@
 {% load i18n %}
 {% load static %}
+
 <!DOCTYPE html>
 <html>
 
@@ -32,6 +33,14 @@
 
 <body>
   {% block body %}
+
+  <style>
+    body {
+      background-image: url("{% static 'imgs/IMG2.jpeg' %}");
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+  </style>
 
   {% if messages %}
   <div>
