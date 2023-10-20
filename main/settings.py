@@ -1,6 +1,7 @@
 
 from pathlib import Path
 from django.contrib import messages
+import os
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,7 +23,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #'django.contrib.sites',
     
     'FINECAP',
 
@@ -67,7 +67,7 @@ ROOT_URLCONF = 'main.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR/'templates'],
+        'DIRS': [os.path.join(BASE_DIR,'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -81,6 +81,11 @@ TEMPLATES = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
 ACCOUNT_FORMS = {
     'add_email': 'allauth.account.forms.AddEmailForm',
     'change_password': 'allauth.account.forms.ChangePasswordForm',
@@ -92,19 +97,19 @@ ACCOUNT_FORMS = {
     'user_token': 'allauth.account.forms.UserTokenForm',
 }
 
-ACCOUNT_RATE_LIMITS = {
+ACCOUNT_SIGNUP_REDIRECT_URL = 'index.html'  
+
+
+'''ACCOUNT_RATE_LIMITS = {
     "change_password": "5/m",
     "manage_email": "10/m",
     "reset_password": "20/m",
     "reset_password_email": "5/m",
     "reset_password_from_key": "20/m",
     "signup": "20/m",
-}
+}'''
 
-AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
-]
+
 
 WSGI_APPLICATION = 'main.wsgi.application'
 

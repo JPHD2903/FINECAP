@@ -3,7 +3,6 @@ from django.contrib import admin
 from django.urls import path, include
 from FINECAP.views import IndexView, ReservaListView, ReservaCreateView, ReservaUpdateView, ReservaDeleteView, ReservaDetailView
 from FINECAP.views import StandListView, StandCreateView, StandUpdateView, StandDeleteView, StandDetailView
-
 from django.views import generic
 
 urlpatterns = [

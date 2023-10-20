@@ -9,12 +9,14 @@ from django.urls import reverse_lazy
 from django.core.paginator import Paginator, Page
 
 
+
 class IndexView(View):
     template_name = "FINECAP/index.html"
 
     def get(self, request, *args, **kwargs):
         total_reservas = Reserva.objects.count()
         total_stands = Stand.objects.count()
+
         context = {
             'total_reservas': total_reservas,
             'total_stands': total_stands,
