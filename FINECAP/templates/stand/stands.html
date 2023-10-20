@@ -39,9 +39,10 @@
       <!--<td>{{ stand.valor }}</td>-->
       <td>
         <a href="{% url 'stands-detail' pk=stand.pk %}" class="btn btn-primary btn-sm">Detalhar</a>
-        <a href="{% url 'stands-update' pk=stand.pk %}" class="btn btn-primary btn-sm">Editar</a>
-        <a href="{% url 'stands-delete' pk=stand.pk %}" class="btn btn-danger btn-sm">Remover</a>
-     
+        {% if user.is_staff %}
+          <a href="{% url 'stands-update' pk=stand.pk %}" class="btn btn-primary btn-sm">Editar</a>
+          <a href="{% url 'stands-delete' pk=stand.pk %}" class="btn btn-danger btn-sm">Remover</a>
+        {% endif %}
       </td>
     </tr>
     {% endfor %}

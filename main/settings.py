@@ -24,8 +24,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
+    
     'FINECAP',
-
+    #'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',    
@@ -64,6 +65,8 @@ MESSAGE_TAGS = {
 
 ROOT_URLCONF = 'main.urls'
 
+
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -97,7 +100,9 @@ ACCOUNT_FORMS = {
     'user_token': 'allauth.account.forms.UserTokenForm',
 }
 
-ACCOUNT_SIGNUP_REDIRECT_URL = 'index.html'  
+LOGIN_REDIRECT_URL = '/'
+SIGNUP_REDIREC_URL = '/'
+LOGOUT_REDIRECT_URL = 'account_login'
 
 
 '''ACCOUNT_RATE_LIMITS = {
@@ -124,6 +129,9 @@ DATABASES = {
     }
 }
 
+import logging
+logger = logging.getLogger('django.db.backends')
+logger.setLevel(logging.DEBUG)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

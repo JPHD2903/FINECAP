@@ -7,11 +7,20 @@ from django.views import generic
 from django.contrib import messages
 from django.urls import reverse_lazy
 from django.core.paginator import Paginator, Page
+from allauth.account.views import LoginView
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 
 
 class IndexView(View):
     template_name = "FINECAP/index.html"
+
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_active:
+            return redirect('erro')
+        return super().dispatch(request,*args, **kwargs)
 
     def get(self, request, *args, **kwargs):
         total_reservas = Reserva.objects.count()
@@ -157,4 +166,13 @@ class StandDetailView(generic.DetailView):
     def get_object(self, queryset=None):
         item_id = self.kwargs.get('pk')  
         return get_object_or_404(Stand, pk=item_id)
+
+
+class CustomLoginView(LoginView):
+    def form_valid(self, form):
+        # Adicione seu código personalizado aqui
+        return super(CustomLoginView, self).form_valid(form)
+
+
+
 

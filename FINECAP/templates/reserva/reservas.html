@@ -29,10 +29,13 @@
       <tr>
         <td>{{ reserva.nome_empresa }}</td>
         <td>{{ reserva.categoria_empresa }}</td>
+
         <td>
           <a href="{% url 'reservas-detail' pk=reserva.pk %}" class="btn btn-primary btn-sm">Detalhar</a>
-          <a href="{% url 'reservas-update' pk=reserva.pk %}" class="btn btn-primary btn-sm">Editar</a>
-          <a href="{% url 'reservas-delete' pk=reserva.pk %}" class="btn btn-danger btn-sm">Remover</a> 
+          {% if user.is_staff %}
+            <a href="{% url 'reservas-update' pk=reserva.pk %}" class="btn btn-primary btn-sm">Editar</a>
+            <a href="{% url 'reservas-delete' pk=reserva.pk %}" class="btn btn-danger btn-sm">Remover</a>
+          {% endif %} 
         </td>
       </tr>
       {% endfor %}
